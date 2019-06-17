@@ -2,6 +2,7 @@ function setDate() {
   const secondHand = document.querySelector(".second-hand");
   const minuteHand = document.querySelector(".min-hand");
   const hourHand = document.querySelector(".hour-hand");
+  const allHands = document.querySelectorAll(".hand")
 
   const now = new Date();
 
@@ -16,8 +17,13 @@ function setDate() {
   secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
   minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
   hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
-  console.log(hours);
+
+  if(secondsDegrees === 90) {
+    allHands.forEach(hand => hand.style.transition = "none")
+} else {
+    allHands.forEach(hand => hand.style.transition = "")
+}
+  
 }
 setInterval(setDate, 1000);
 
-//add if statement to make it so second hand doesn't jump when it reaches 360 deg
